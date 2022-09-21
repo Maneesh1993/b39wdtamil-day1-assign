@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>http1.1 vs http2</h1>
+    <p></p>
+    <h2>http1.1 [1997]introduced persistent connection.pipelining,cache-control and many others features</h2>
+    <ol>
+        <li>It was no longer required for each connection to be terminated immediately after every request was served with a response; instead, with the keep-alive header, it was possible to have persistent connections. It allowed multiple requests/responses per TCP connection</li>
+        <li>HTTP/1.1 provided support for chunk transfers that allowed streaming of content dynamically as chunks and for additional headers to be sent after the message body. This enhancement was particularly useful in cases where values of a field remained unknown until the content had been produced. For example, when the content had to be digitally signed, it was not possible to do so before the entire content gets generated.</li>
+        <li>Other features that reinforced its stability were introduced such as:
+            pipelining (the second request is sent before the response to the first is adequately served)
+            content negotiation (an exchange between client and server to determine the media type, it also provides the provision to serve different versions of a resource at the same URI)
+            cache control (used to specify caching policies in both requests and responses)</li>
+        <li>The Upgrade header was used to indicate a preference from the client that made it possible to switch to a more preferred protocol if found appropriate by the server.</li>
+    </ol>
+    <h2>http/2[2015] based on googles SPIDY allows multiplexing and server push</h2>
+    <h3>single TCP connection) but as it gained traction IETF’s HTTP Working Group came up with HTTP/2 in 2015, which is based on the SPDY protocol.</h2>
+    <ol>
+        <li> HTTP2 is much faster and more reliable than HTTP1. </li>
+        <li>HTTP1 loads a single request for every TCP connection, while HTTP2 avoids network delay by using multiplexing.</li>
+        <li>Uses multiplexing, where over a single TCP connection resources to be delivered are interleaved and arrive at the client almost at the same time. It is done using streams which can be prioritized, can have dependencies and individual flow control. It also provides a feature called server push that allows the server to send data that the client will need but has not yet requested.</li>
+        <li>It introduces the concept of a server push where the server anticipates the resources that will be required by the client and pushes them prior to the client making requests. The client retains the authority to deny the server push; however, in most cases, this feature adds a lot of efficiency to the process.</li>
+        <li>Introduces the concept of multiplexing that interleaves the requests and responses without head-of-line blocking and does so over a single TCP connection.</li>
+        <li>It is a binary protocol i.e. only binary commands in the form of 0s and 1s are transmitted over the wire. The binary framing layer divides the message into frames that are segregated based on their type – Data or Header. This feature greatly increases efficiency in terms of security, compression and multiplexing.</li>
+        <li>HTTP/2 uses HPACK header compression algorithm that is resilient to attacks like CRIME and utilizes static Huffman encoding.</li>
+    </ol>
+
+    <h1>object in javascript</h1>;
+    <h3>const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};</h3>
+    <h3>const person = { <br>
+                        firstName: "John",<br>
+                        lastName: "Doe",<br>
+                        age: 50,<br>
+                        eyeColor: "blue",<br>
+                    };</h3>,<br>
+
+      <h3>
+        const person = {};<br>
+person.firstName = "John";<br>
+person.lastName = "Doe";<br>
+person.age = 50;<br>
+person.eyeColor = "blue";<br>
+      </h3><br>
+
+      <h1>Using the JavaScript Keyword new</h1><br>
+      <h3>const person = new Object();
+        person.firstName = "John";<br>
+        person.lastName = "Doe";<br>
+        person.age = 50;<br>
+        person.eyeColor = "blue";</h3><br>
+
+
+</body>
+</html>
